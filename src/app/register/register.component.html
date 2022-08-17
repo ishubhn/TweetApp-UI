@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
+	<div class="container-fluid">
+		<a class="navbar-brand" routerLink="/">
+			<img src="assets/tweet-white.png" alt="tweet-logo" width="40" height="40"
+				class="d-inline-block align-text-top">
+		</a>
+		<a class="navbar-brand" routerLink="/"><strong>TweetApp</strong></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+			aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-link" style="display: none;" aria-current="page" routerLink="/login">Login</a>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<div class="container body-container">
+	<form class="row g-3" #f="ngForm" (ngSubmit)="onSubmit(f)">
+		<h1 class="h3 mb-4 fw-normal">Sign Up</h1>
+		<!-- First Name -->
+		<div class="col-md-6">
+			<label for="inputFirstname" class="form-label">First Name</label>
+			<input type="text" class="form-control" name="firstName" id="inputFirstname" placeholder="First Name"
+				ngModel #firstName="ngModel" min="2" max="30" required>
+		</div>
+		<!-- Last Name -->
+		<div class="col-md-6">
+			<label for="inputLastname" class="form-label">Last Name</label>
+			<input type="text" class="form-control" name="lastName" id="inputLastname" placeholder="Last Name" ngModel
+				#lastName="ngModel" min="8" required>
+		</div>
+		<!-- Email -->
+		<div class="col-md-6">
+			<label for="inputEmail" class="form-label">Email</label>
+			<input type="email" class="form-control" name="emailId" id="inputEmail" placeholder="name@domain.com"
+				ngModel #emailId="ngModel" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$" required email>
+		</div>
+		<!-- Contact Number -->
+		<div class="col-md-6">
+			<label for="inputContactNumber" class="form-label">Contact Number</label>
+			<input type="email" class="form-control" name="contactNumber" id="inputContactNumber" placeholder="Contact"
+				ngModel #contactNumber="ngModel" pattern="^[0-9]{10}" max="10" required>
+		</div>
+		<!-- Gender Radio Button -->
+		<div class="col-md-6">
+			<div class="form-label">Gender</div>
+			<div class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="gender" ngModel #gender="ngModel" id="inputGenderMaleRadio" value="Male">
+				<label class="form-check-label" for="inputGenderMaleRadio">Male</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="gender" ngModel #gender="ngModel" id="inputGenderFemaleRadio" value="Female">
+				<label class="form-check-label" for="inputGenderFemaleRadio">Female</label>
+			</div>
+		</div>
+		<!-- Date Of Birth -->
+		<div class="col-md-6">
+			<div class="form-label">Date Of Birth</div>
+			<div class="input-group">
+				<!-- <input class="form-control" placeholder="dd/mm/yyyy" name="dateOfBirth" #c2="ngModel"
+					[(ngModel)]="dateBirth" ngbDatepicker #dateOfBirth="ngbDatepicker"> -->
+				<input class="form-control" placeholder="dd/mm/yyyy" name="dateOfBirth" #c2="ngModel" ngModel
+					ngbDatepicker #dateOfBirth="ngbDatepicker">
+				<button class="btn btn-outline-secondary bi bi-calendar calendar" (click)="dateOfBirth.toggle()"
+					type="button">&#xF1F6;</button>
+			</div>
+		</div>
+		<!-- Password -->
+		<div class="col-md-6">
+			<label for="inputPassword" class="form-label">Password</label>
+			<input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password"
+				ngModel #password="ngModel" min="8" required>
+		</div>
+		<!-- Confirm Password -->
+		<div class="col-md-6">
+			<label for="inputPasswordConfirm" class="form-label">Confirm Password</label>
+			<input type="password" class="form-control" name="confirmPassword" id="inputPasswordConfirm"
+				placeholder="Confirm Password" ngModel #confirmPassword="ngModel" min="8" required>
+		</div>
+		<div class="col-12 center">
+			<button type="submit" class="btn btn-dark">Sign in</button>
+		</div>
+	</form>
+</div>

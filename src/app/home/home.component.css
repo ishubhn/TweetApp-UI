@@ -1,0 +1,11 @@
+#image {
+    width: 100%;
+    height: auto;
+}
+
+#title {
+    font-size: 5rem;
+    color: #ffffff;
+    margin: auto;
+    padding: auto;
+}
