@@ -1,3 +1,4 @@
+import { LogoutComponent } from './logout/logout.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { RegisterComponent } from './register/register.component';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,7 @@ const routes: Routes = [
 	{ path: "login", component: LoginComponent },
 	{ path: "register", component: RegisterComponent },
 	{ path: "forgot", component: ForgotPasswordComponent },
+	{ path: "logout", component: LogoutComponent },
 	];
 
 @NgModule({
