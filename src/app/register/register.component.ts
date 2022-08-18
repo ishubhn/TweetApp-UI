@@ -1,6 +1,7 @@
 import { NgForm } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 
 export class User {
 	emailId: String;
@@ -22,6 +23,7 @@ export class RegisterComponent implements OnInit {
 	@ViewChild('f', { static: false }) signupForm: NgForm;
 	submitted: boolean = false;
 	equalPassword: boolean = true;
+	faCalendar = faCalendar;
 
 	user: User = {
 		emailId: '',
