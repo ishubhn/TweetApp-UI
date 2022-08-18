@@ -9,3 +9,12 @@
     margin: auto;
     padding: auto;
 }
+
+.tweet {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.tweet:hover {
+    color: #1DA1F2;
+}
