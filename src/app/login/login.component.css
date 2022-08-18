@@ -17,10 +17,6 @@ body {
     padding: 15px;
     margin: auto;
 }
-/* 
-.form-signin .checkbox {
-    font-weight: 400;
-} */
 
 .form-signin .form-floating:focus-within {
     z-index: 2;
@@ -38,6 +34,10 @@ body {
     border-top-right-radius: 0;
 }
 
+.form-signin .password {
+    text-align: right;
+}
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -53,5 +53,5 @@ body {
 }
 
 input.ng-invalid.ng-touched {
-    border: 2px solid rgb(203, 62, 6);
+    border: 2px solid #ff6700;
 }

@@ -33,10 +33,18 @@
                     ngModel #password="ngModel"
                     pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required>
                 <label for="floatingPassword">Password</label>
-            </div><br>
+            </div>
+
+            <div class="mb-3 password">
+                <a routerLink="/forgot" class="text-reset text-dark small">Forgot Password</a>
+            </div>
 
             <button class="w-100 btn btn-lg btn-dark" type="submit" [disabled]="!f.valid">Sign in</button>
-            <p class="mt-5 mb-3 text-muted">&copy; TweetApp</p>
+
+            <div class="text-center pt-3 align-middle">
+                Not a member yet? <a routerLink="/register" class="text-primary">Sign Up</a>
+            </div>
         </form>
+        <p class="mt-5 text-muted"><small>&copy; TweetApp</small></p>
     </main>
 </div>

@@ -1,43 +1,10 @@
 import { NgForm } from '@angular/forms';
-import { Component, OnInit, Injectable } from '@angular/core';
-import { NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-
-/**
- * This Service handles how the date is rendered and parsed from keyboard i.e. in the bound input field.
- */
-// @Injectable()
-// export class CustomDateParserFormatter extends NgbDateParserFormatter {
-
-// 	readonly DELIMITER = '/';
-
-// 	parse(value: string): NgbDateStruct | null {
-// 		if (value) {
-// 			const date = value.split(this.DELIMITER);
-// 			return {
-// 				day: parseInt(date[0], 10),
-// 				month: parseInt(date[1], 10),
-// 				year: parseInt(date[2], 10)
-// 			};
-// 		}
-// 		return null;
-// 	}
-
-// 	format(date: NgbDateStruct | null): string {
-// 		return date ? date.day + this.DELIMITER + date.month + this.DELIMITER + date.year : '';
-// 	}
-// }
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
 	selector: 'app-register',
 	templateUrl: './register.component.html',
 	styleUrls: ['./register.component.css'],
-
-	// NOTE: For this example we are only providing current component, but probably
-	// NOTE: you will want to provide your main App Module
-	// providers: [
-	// 	{ provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter }
-	// ]
 })
 export class RegisterComponent implements OnInit {
 
@@ -48,13 +15,29 @@ export class RegisterComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
-	// get today() {
-	// 	return this.dateAdapter.toModel(this.ngbCalendar.getToday())!;
-	// }
-	// constructor() { }
+	// parse date as per dd/mm/yyyy
+	parseDate (dateBirth: any) {
+		let day = dateBirth.day;
+		let month = dateBirth.month;
+		let year = dateBirth.year;
+		let finalDate : String;
+
+		if (month < 10 && day < 10) {
+			finalDate = `0${day}/0${month}/${year}`;
+		} else if (month < 10 && day > 9) {
+			finalDate = `${day}/0${month}/${year}`;
+		} else if (day < 10 && month > 9) {
+			finalDate = `0${day}/${month}/${year}`;
+		} else {
+			finalDate = `${day}/${month}/${year}`;
+		}
+
+		return finalDate;
+	}
 
 	onSubmit(f: NgForm) {
-		console.log(f);
+		console.log(f.value);
+		console.log(this.parseDate(f.value.dateOfBirth));
 	}
 
 }
