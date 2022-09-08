@@ -11,13 +11,17 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-link" style="display: none;" aria-current="page" routerLink="/login">Login</a>
+				<a class="nav-link active" aria-current="page" routerLink="/login">Login</a>
 			</div>
 		</div>
 	</div>
 </nav>
 
 <div class="container body-container">
+	<div *ngIf="isUserRegisterSuccess === true" class="alert alert-success alert-dismissible fade show" role="alert">
+		<strong>Congratulations!</strong> You're registered successfully.
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
 	<form class="row g-3" #f="ngForm" (ngSubmit)="onSubmit(f)">
 		<h1 class="h3 mb-4 fw-normal">Sign Up</h1>
 		<!-- First Name -->
@@ -76,9 +80,10 @@
 		<div class="col-md-6">
 			<label for="inputPasswordConfirm" class="form-label">Confirm Password</label>
 			<input type="password" class="form-control" name="confirmPassword" id="inputPasswordConfirm"
-				placeholder="Confirm Password" ngModel #confirmPassword="ngModel" min="8" required>
+				placeholder="Confirm Password" ngModel #confirmPassword="ngModel"
+				min="8" required>
 		</div>
-		<p class="text-danger" *ngIf="!equalPassword">Invalid Password</p>
+		<p class="text-danger" *ngIf="!equalPassword">Password does not match</p>
 		<div class="col-12 center">
 			<button type="submit" class="btn btn-dark" [disabled]="!f.valid">Sign in</button>
 		</div>
