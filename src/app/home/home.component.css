@@ -10,11 +10,18 @@
     padding: auto;
 }
 
+/* 
+#title:hover {
+    color:#1DA1F2;
+} 
+*/
+
 .tweet {
-    text-decoration: none;
+    /* text-decoration: none; */
     color: #ffffff;
 }
 
 .tweet:hover {
     color: #1DA1F2;
+    cursor: pointer;
 }
