@@ -1,19 +1,25 @@
-import { User } from '../register/register.component';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from '../register/register.component';
+import { LoginUser } from '../login/login.component';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class UserService {
 
-	private REST_SERVICE = "http://localhost:8082/api/v1.0/tweets"
+	private REST_SERVICE_URI = "http://localhost:8082/api/v1.0/tweets"
 
 	constructor(private http: HttpClient) { }
 
 	// user sign up
 	registerUser = (user: User) => {
-		console.warn(`${this.REST_SERVICE}/register`);
-		return this.http.post(`${this.REST_SERVICE}/register`, user);
+		console.warn(`${this.REST_SERVICE_URI}/register`);
+		return this.http.post(`${this.REST_SERVICE_URI}/register`, user);
+	}
+
+	// user login
+	loginUser = (userCredetials: LoginUser) => {
+		return this.http.post(`${this.REST_SERVICE_URI}/login`, userCredetials);
 	}
 }
