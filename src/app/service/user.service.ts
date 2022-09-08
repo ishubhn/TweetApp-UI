@@ -15,7 +15,6 @@ export class UserService {
 
 	// user sign up
 	registerUser = (user: User) => {
-		console.warn(`${this.REST_SERVICE_URI}/register`);
 		return this.http.post(`${this.REST_SERVICE_URI}/register`, user);
 	}
 
@@ -27,5 +26,20 @@ export class UserService {
 	// forgot password
 	forgotPassword = (userEmail: String, user: UpdateUser) => {
 		return this.http.post(`${this.REST_SERVICE_URI}/${userEmail}/forgot`, user);
+	}
+
+	// find all users
+	findAllUsers = () => {
+		return this.http.get(`${this.REST_SERVICE_URI}/users/all`);
+	}
+
+	// find user by id
+	findUserById = (userEmail: String) => {
+		return this.http.get(`${this.REST_SERVICE_URI}/user/search/${userEmail}`);
+	}
+
+	// logged out
+	logout = (userEmail: String) => {
+		return this.http.get(`${this.REST_SERVICE_URI}/${userEmail}/logout`);
 	}
 }

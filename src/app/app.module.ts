@@ -13,9 +13,10 @@ import { ErrorComponent } from './error/error.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LogoutComponent } from './logout/logout.component';
-import { UserComponent } from './user/user.component';
+import { UsersComponent } from './users/users.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserHomeComponent } from './user-home/user-home.component';
+import { TweetComponent } from './tweet/tweet.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,9 @@ import { UserHomeComponent } from './user-home/user-home.component';
     ErrorComponent,
     ForgotPasswordComponent,
     LogoutComponent,
-    UserComponent,
-    UserHomeComponent
+    UsersComponent,
+    UserHomeComponent,
+    TweetComponent
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 	@ViewChild('f', { static: false })
 	loginForm: NgForm;
 	isUserLoginSuccess:boolean = true;
-
+	
 	private user: LoginUser = {
 		email: "",
 		password: ""
@@ -39,7 +39,9 @@ export class LoginComponent implements OnInit {
 				console.log(responseData);
 				console.log(this.user);
 				console.log("User Logged in successfully");
-				this.router.navigate(['/']);
+				// Store username in local storage in browser
+				localStorage.setItem("username", String(this.user.email));
+				this.router.navigate(['/user']);
 			},
 			err => {
 				console.log(this.user);
