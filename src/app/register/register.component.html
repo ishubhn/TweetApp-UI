@@ -52,11 +52,13 @@
 		<div class="col-md-6">
 			<div class="form-label">Gender</div>
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="radio" name="gender" ngModel #gender="ngModel" id="inputGenderMaleRadio" value="Male">
+				<input class="form-check-input" type="radio" name="gender" ngModel #gender="ngModel"
+					id="inputGenderMaleRadio" value="Male">
 				<label class="form-check-label" for="inputGenderMaleRadio">Male</label>
 			</div>
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="radio" name="gender" ngModel #gender="ngModel" id="inputGenderFemaleRadio" value="Female">
+				<input class="form-check-input" type="radio" name="gender" ngModel #gender="ngModel"
+					id="inputGenderFemaleRadio" value="Female">
 				<label class="form-check-label" for="inputGenderFemaleRadio">Female</label>
 			</div>
 		</div>
@@ -67,21 +69,24 @@
 				<input class="form-control" placeholder="yyyy-mm-dd" name="dateOfBirth" #c2="ngModel" ngModel
 					ngbDatepicker #dateOfBirth="ngbDatepicker">
 				<button class="btn btn-outline-secondary bi bi-calendar calendar" (click)="dateOfBirth.toggle()"
-					type="button"><fa-icon [icon]="faCalendar"></fa-icon></button>
+					type="button">
+					<fa-icon [icon]="faCalendar"></fa-icon>
+				</button>
 			</div>
 		</div>
 		<!-- Password -->
 		<div class="col-md-6">
 			<label for="inputPassword" class="form-label">Password</label>
 			<input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password"
-				ngModel #password="ngModel" min="8" required>
+				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!#%*?&])[A-Za-z\d@$!%*#?&]{8,}$" ngModel
+				#password="ngModel" min="8" required>
 		</div>
 		<!-- Confirm Password -->
 		<div class="col-md-6">
 			<label for="inputPasswordConfirm" class="form-label">Confirm Password</label>
 			<input type="password" class="form-control" name="confirmPassword" id="inputPasswordConfirm"
-				placeholder="Confirm Password" ngModel #confirmPassword="ngModel"
-				min="8" required>
+				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!#%*?&])[A-Za-z\d@$!%*#?&]{8,}$"
+				placeholder="Confirm Password" ngModel #confirmPassword="ngModel" min="8" required>
 		</div>
 		<p class="text-danger" *ngIf="!equalPassword">Password does not match</p>
 		<div class="col-12 center">
