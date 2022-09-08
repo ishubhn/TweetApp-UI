@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../service/user.service';
 
 export class LoginUser {
-	emailId: String;
+	email: String;
 	password: String;
 }
 
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 	isUserLoginSuccess:boolean = true;
 
 	private user: LoginUser = {
-		emailId: "",
+		email: "",
 		password: ""
 	};
 
@@ -30,17 +30,19 @@ export class LoginComponent implements OnInit {
 	}
 
 	onSubmit(f: NgForm) {
-		this.user.emailId = this.loginForm.value.email;
+		this.user.email = this.loginForm.value.email;
 		this.user.password = this.loginForm.value.password;
 		
 		console.log(this.user);
 		this.service.loginUser(this.user).subscribe(
 			responseData => {
 				console.log(responseData);
+				console.log(this.user);
 				console.log("User Logged in successfully");
 				this.router.navigate(['/']);
 			},
 			err => {
+				console.log(this.user);
 				this.isUserLoginSuccess = false;
 				console.error("Invalid Credentials");
 			}
