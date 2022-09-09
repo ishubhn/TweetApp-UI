@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { HttpParams } from '@angular/common/http';
 import { Tweet } from './../interface/tweet';
 import { TweetService } from './../service/tweet.service';
 import { UserService } from '../service/user.service';
@@ -16,8 +18,8 @@ export class UserHomeComponent implements OnInit {
 	searchUsersForm: NgForm;
 
 	@ViewChild('g', { static: false })
-	tweetBody: NgForm;
-	
+	tweetBodyForm: NgForm;
+
 	faMagnifyingGlass = faMagnifyingGlass;
 	faHeartCrack = faHeartCrack;
 
@@ -27,7 +29,7 @@ export class UserHomeComponent implements OnInit {
 	tweetLength: number;
 	emptyTweets: boolean = false;
 
-	constructor(private service: UserService, private tweetService: TweetService) {
+	constructor(private service: UserService, private tweetService: TweetService, private router: Router) {
 		this.userName = localStorage.getItem("username");
 	}
 
@@ -36,9 +38,8 @@ export class UserHomeComponent implements OnInit {
 		this.tweetService.getAllTweets().subscribe(
 			(responseData: Tweet[]) => {
 				console.log(responseData);
-				// this.tweets.push(responseData);
 				this.tweets = responseData;
-				console.log(this.tweets.forEach);
+				// console.log(this.tweets.forEach);
 			},
 			err => {
 				console.log("error -> " + err);
@@ -59,7 +60,24 @@ export class UserHomeComponent implements OnInit {
 	}
 
 	postTweet(g: NgForm) {
+		const params = new HttpParams()
+			.set('body', this.tweetBodyForm.value.body);
 
+		this.tweetService.postTweet(this.userName, params)
+			.subscribe(
+				response => {
+					console.log("Tweet posted successfully");
+					console.warn(response);
+					// window.location.reload();
+					this.ngOnInit();
+					this.tweetBodyForm.reset();
+				},
+				err => {
+					console.error("Unable to post tweet");
+					console.warn(err.error.message);
+					console.warn(err.error);
+				}
+			);
 	}
 
 
