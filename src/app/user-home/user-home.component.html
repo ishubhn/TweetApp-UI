@@ -61,8 +61,12 @@
                 </form>
             </div>
             <hr style="height:2px; border-width:0; color:gray; background-color:gray">
-            <div>
-                <app-tweet></app-tweet>
+            <div *ngFor="let tweet of tweets">
+                <!-- <p>{{tweet.email}}</p> -->
+                <app-tweet [tweet]="tweet"></app-tweet>
+            </div>
+            <div class="text-center fs-2" *ngIf="emptyTweets">
+                No Tweets Present. <fa-icon style="color:red;" [icon]="faHeartCrack"></fa-icon>
             </div>
         </div>
     </div>

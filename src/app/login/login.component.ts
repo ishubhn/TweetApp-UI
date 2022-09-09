@@ -39,12 +39,15 @@ export class LoginComponent implements OnInit {
 				console.log(responseData);
 				console.log(this.user);
 				console.log("User Logged in successfully");
+				// make a get call find user by email
+				// save response data in local storage
 				// Store username in local storage in browser
 				localStorage.setItem("username", String(this.user.email));
 				this.router.navigate(['/user']);
 			},
 			err => {
 				console.log(this.user);
+				console.log(err.error.message);
 				this.isUserLoginSuccess = false;
 				console.error("Invalid Credentials");
 			}
