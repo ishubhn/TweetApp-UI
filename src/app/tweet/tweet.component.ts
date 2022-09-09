@@ -18,7 +18,6 @@ export class TweetComponent implements OnInit {
 	likeClass: string;
 	retweetClass: string;
 
-	// @Input() tweet: Tweet; 
 	@Input() 
 	tweet: Tweet;
 	
