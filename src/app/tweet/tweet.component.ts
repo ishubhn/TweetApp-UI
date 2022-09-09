@@ -15,10 +15,16 @@ export class TweetComponent implements OnInit {
 	faRetweet = faRetweet;
 	faLike = faHeart;
 	faLikeEmpty = farHeart;
+	likeClass: string;
+	retweetClass: string;
 
 	constructor() { }
 
 	ngOnInit(): void {
+	}
+
+	addLike() {
+		
 	}
 
 }

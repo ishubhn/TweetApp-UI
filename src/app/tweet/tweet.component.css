@@ -5,4 +5,13 @@ fa-icon.tweet-icon {
     padding: 0.8em;
     width: 15px;
     height: 15px;
+    color: #1DA1F2;
+}
+
+.like, .retweet {
+    cursor: pointer;    
+}
+
+.timestamp {
+    font-size: 0.8rem;
 }
