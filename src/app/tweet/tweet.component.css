@@ -15,3 +15,7 @@ fa-icon.tweet-icon {
 .timestamp {
     font-size: 0.8rem;
 }
+
+fa-icon.likedTweeet {
+    color: rgb(222, 37, 37);
+}

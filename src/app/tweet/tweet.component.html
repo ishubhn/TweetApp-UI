@@ -11,8 +11,11 @@
     </div>
     <div class="ps-5 d-flex flex-row bd-highlight mb-3">
         <div class="p-3 bd-highlight">
-            <fa-icon [class]="likeClass" (mouseover)="likeClass='fa-lg like'" (mouseout)="likeClass=''" class="icon"
-                [icon]="faLikeEmpty"></fa-icon>
+            <fa-icon [class]="likeClass" (mouseover)="likeClass='fa-lg like'" (mouseout)="likeClass=''" (click)="addLike()" class="icon"
+                [icon]="faLikeEmpty" *ngIf="tweet.likes==0"></fa-icon>
+            <fa-icon [class]="likeClass" (mouseover)="likeClass='fa-lg like'" (mouseout)="likeClass=''" (click)="addLike()" class="liked-tweet"
+                [icon]="faLike" *ngIf="tweet.likes>0"></fa-icon>
+            <span class="ms-2" *ngIf="tweet.likes>0">{{tweet.likes}}</span>
         </div>
         <div class="p-3 ps-5 bd-highlight">
             <fa-icon [class]="retweetClass" (mouseover)="retweetClass='fa-lg retweet'" (mouseout)="retweetClass=''"

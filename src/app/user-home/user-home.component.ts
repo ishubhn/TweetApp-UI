@@ -92,5 +92,7 @@ export class UserHomeComponent implements OnInit {
 		}
 	}
 
-
+	refreshPage() {
+		this.ngOnInit();
+	}
 }
