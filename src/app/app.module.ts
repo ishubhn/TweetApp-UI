@@ -17,6 +17,7 @@ import { UsersComponent } from './users/users.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { TweetComponent } from './tweet/tweet.component';
+import { ReplyComponent } from './tweet/reply/reply.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TweetComponent } from './tweet/tweet.component';
     LogoutComponent,
     UsersComponent,
     UserHomeComponent,
-    TweetComponent
+    TweetComponent,
+    ReplyComponent
   ],
   imports: [
     BrowserModule,

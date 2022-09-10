@@ -31,12 +31,16 @@ export class TweetComponent implements OnInit {
 	updateClass: string;
 
 	isUpdate: boolean = false;
+	isReplyBox: boolean = false;
 	loggedInUser: string;
 	tweetLength: number;
 	user: any;
 
 	@ViewChild('f', { static: false })
 	tweetUpdateForm: NgForm;
+
+	@ViewChild('r', { static: false })
+	replyForm: NgForm;
 
 	@Input()
 	tweet: Tweet;
@@ -52,15 +56,20 @@ export class TweetComponent implements OnInit {
 					this.user = response;
 				}
 			);
+
 		}
 	}
 
-	keyup(text: NgModel) {
+	keydown(text: NgModel) {
 		this.tweetLength = 144 - text.value.length;
 	}
 
 	toggleUpdate() {
 		this.isUpdate = !this.isUpdate;
+	}
+
+	toggleReply() {
+		this.isReplyBox = !this.isReplyBox;
 	}
 
 	addLike() {
@@ -86,8 +95,19 @@ export class TweetComponent implements OnInit {
 		)
 	}
 
-	replyTweet() {
+	replyTweet(r: NgForm) {
+		const params = new HttpParams()
+			.set('body', this.replyForm.value.replyBody);
 
+		this.tweetService.replyTweet(this.loggedInUser, this.tweet.id, params).subscribe(
+			(res) => {
+				console.log("Reply added to tweet");
+				this.parent.refreshPage();
+			},
+			(err) => {
+
+			}
+		)
 	}
 
 	updateTweet(f: NgForm) {

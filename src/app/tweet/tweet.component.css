@@ -1,13 +1,3 @@
-fa-icon.tweet-icon {
-    /* border-color: papayawhip; */
-    background-color: papayawhip;
-    border-radius: 50%;
-    padding: 1em;
-    width: 15px;
-    height: 15px;
-    color: #1DA1F2;
-}
-
 .like, .reply, .delete, .update {
     cursor: pointer;    
 }

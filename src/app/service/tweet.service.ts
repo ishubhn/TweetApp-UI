@@ -30,6 +30,10 @@ export class TweetService {
 	}
 
 	updateTweet(email: any, tweetId: number, params: HttpParams) {
-		return this.http.put(`${this.REST_SERVICE_URI}/${email}/update/${tweetId}`, params)
+		return this.http.put(`${this.REST_SERVICE_URI}/${email}/update/${tweetId}`, params);
+	}
+
+	replyTweet(email:any, tweetId: number, params: HttpParams) {
+		return this.http.post(`${this.REST_SERVICE_URI}/${email}/reply/${tweetId}`, params);
 	}
 }

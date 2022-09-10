@@ -1,8 +1,9 @@
+import { UserData } from './../interface/user-data';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginUser } from '../interface/login-user';
-import { User } from '../interface/user';
 import { UpdateUserPassword } from './../interface/update-user-password';
+import { User } from '../interface/user';
 
 @Injectable({
 	providedIn: 'root'
@@ -35,7 +36,7 @@ export class UserService {
 
 	// find user by id
 	findUserById = (userEmail: String) => {
-		return this.http.get(`${this.REST_SERVICE_URI}/user/search/${userEmail}`);
+		return this.http.get<UserData>(`${this.REST_SERVICE_URI}/user/search/${userEmail}`);
 	}
 
 	// logged out
