@@ -61,8 +61,10 @@
                 </form>
             </div>
             <hr style="height:2px; border-width:0; color:gray; background-color:gray">
-            <div class="py-2 my-2" *ngFor="let tweet of tweets.slice().reverse()">
-                <app-tweet [tweet]="tweet"></app-tweet>
+            <div *ngIf="!emptyTweets">
+                <div class="py-2 my-2" *ngFor="let tweet of tweets.slice().reverse()">
+                    <app-tweet [tweet]="tweet"></app-tweet>
+                </div>
             </div>
             <div class="text-center pt-5 mt-2 fs-3" *ngIf="emptyTweets">
                 No Tweets Present. <fa-icon style="color:red;" [icon]="faHeartCrack"></fa-icon>

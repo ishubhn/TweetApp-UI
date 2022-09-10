@@ -75,8 +75,6 @@ export class RegisterComponent implements OnInit {
 			console.log("Password and Re-typed password matched successfully");
 			this.user.password = this.signupForm.value.password;
 			this.equalPassword = true;
-			console.log(this.user);
-			// this.registerUser(this.user);
 
 			this.service.registerUser(this.user).subscribe(
 				responseData => {

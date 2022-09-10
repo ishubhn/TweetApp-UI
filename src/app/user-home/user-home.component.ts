@@ -39,12 +39,13 @@ export class UserHomeComponent implements OnInit {
 			(responseData: Tweet[]) => {
 				console.log(responseData);
 				this.tweets = responseData;
-				// console.log(this.tweets.forEach);
+				this.emptyTweets = false;
 			},
 			err => {
 				console.log("error -> " + err);
 				console.log(err.error.message);
 				this.emptyTweets = true;
+				this.ngOnInit();
 			}
 		);
 
@@ -60,24 +61,29 @@ export class UserHomeComponent implements OnInit {
 	}
 
 	postTweet(g: NgForm) {
-		const params = new HttpParams()
-			.set('body', this.tweetBodyForm.value.body);
+		if (this.tweetBodyForm.value.body !== null && this.tweetBodyForm.value.body !== " ") {
+			const params = new HttpParams()
+				.set('body', this.tweetBodyForm.value.body);
 
-		this.tweetService.postTweet(this.userName, params)
-			.subscribe(
-				response => {
-					console.log("Tweet posted successfully");
-					console.warn(response);
-					// window.location.reload();
-					this.ngOnInit();
-					this.tweetBodyForm.reset();
-				},
-				err => {
-					console.error("Unable to post tweet");
-					console.warn(err.error.message);
-					console.warn(err.error);
-				}
-			);
+			this.tweetService.postTweet(this.userName, params)
+				.subscribe(
+					response => {
+						console.log("Tweet posted successfully");
+						console.warn(response);
+						// window.location.reload();
+						this.tweetBodyForm.reset();
+						this.ngOnInit();
+					},
+					err => {
+						this.ngOnInit();
+						console.error("Unable to post tweet");
+						console.warn(err.error.message);
+						console.warn(err.error);
+					}
+				);
+		} else {
+			console.error("Invalid Mail Content. Null Value");
+		}
 	}
 
 
