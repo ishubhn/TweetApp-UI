@@ -8,7 +8,7 @@ fa-icon.tweet-icon {
     color: #1DA1F2;
 }
 
-.like, .retweet {
+.like, .retweet, .delete, .update {
     cursor: pointer;    
 }
 
@@ -18,4 +18,8 @@ fa-icon.tweet-icon {
 
 fa-icon.likedTweeet {
     color: rgb(222, 37, 37);
+}
+
+textarea {
+	resize: none;
 }

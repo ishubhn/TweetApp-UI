@@ -18,10 +18,18 @@ export class TweetService {
 	}
 
 	postTweet(email: any, params: HttpParams) {
-		return this.http.post(`${this.REST_SERVICE_URI}/${email}/add`,params);
+		return this.http.post(`${this.REST_SERVICE_URI}/${email}/add`, params);
 	}
 
 	likeTweet(email: any, tweetId: number) {
-		return this.http.put(`${this.REST_SERVICE_URI}/${email}/like/${tweetId}`,{});
+		return this.http.put(`${this.REST_SERVICE_URI}/${email}/like/${tweetId}`, {});
+	}
+
+	deleteTweet(email: any, tweetId: number) {
+		return this.http.delete(`${this.REST_SERVICE_URI}/${email}/delete/${tweetId}`);
+	}
+
+	updateTweet(email: any, tweetId: number, params: HttpParams) {
+		return this.http.put(`${this.REST_SERVICE_URI}/${email}/update/${tweetId}`, params)
 	}
 }

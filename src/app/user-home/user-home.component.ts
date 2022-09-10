@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
 import { Tweet } from './../interface/tweet';
 import { TweetService } from './../service/tweet.service';
@@ -19,6 +19,7 @@ export class UserHomeComponent implements OnInit {
 
 	@ViewChild('g', { static: false })
 	tweetBodyForm: NgForm;
+	someSubscription: any;
 
 	faMagnifyingGlass = faMagnifyingGlass;
 	faHeartCrack = faHeartCrack;
@@ -76,9 +77,8 @@ export class UserHomeComponent implements OnInit {
 					response => {
 						console.log("Tweet posted successfully");
 						console.warn(response);
-						// window.location.reload();
-						this.tweetBodyForm.reset();
-						this.ngOnInit();
+						this.updatePage();
+						this.tweetLength = 144;
 					},
 					err => {
 						this.ngOnInit();
@@ -88,11 +88,19 @@ export class UserHomeComponent implements OnInit {
 					}
 				);
 		} else {
-			console.error("Invalid Mail Content. Null Value");
+			console.error("Invalid tweet Content. Null Value");
 		}
 	}
 
 	refreshPage() {
 		this.ngOnInit();
+	}
+
+	// refresh component
+	updatePage() {
+		let currentUrl = this.router.url;
+		this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+		this.router.onSameUrlNavigation = 'reload';
+		this.router.navigate([currentUrl]);
 	}
 }

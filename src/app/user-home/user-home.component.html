@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <div class="border border-danger bg-warning text-dark col-9">
+        <div class="text-dark col-9">
             <div class="p-auto">
                 <form #g="ngForm" (ngSubmit)="postTweet(g)">
                     <div class="form-floating mt-3 mx-3">
@@ -55,7 +55,7 @@
                         <p>{{tweetLength}}/144</p>
                     </div>
                     <div class="mt-3 float-end">
-                        <button type="submit" class="btn-primary rounded-pill" [disabled]="!g.valid">Tweet</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="!g.valid">Tweet</button>
                     </div>
                 </form>
             </div>

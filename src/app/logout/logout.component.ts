@@ -18,9 +18,19 @@ export class LogoutComponent implements OnInit {
 	}
 
 	logout() {
-		this.service.logout(this.username);
-		this.router.navigate(['/login']);
-		localStorage.clear(); // Remove email id from localStorage memory
+		this.service.logout(this.username).subscribe(
+			res => {
+				console.log(res);
+				console.log("logout successfull");
+				localStorage.clear(); // Remove email id from localStorage memory
+				localStorage.setItem('loginStatus', 'false');
+				this.router.navigate(['/login']);
+			},
+			err => {
+				console.error("logout");
+				console.error(err.error.message);
+			}
+		);
 	}
 
 }

@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
 					localStorage.setItem("firstName", String(this.loggedInUserData.firstName));
 					localStorage.setItem("lastName", String(this.loggedInUserData.lastName));
 					localStorage.setItem("gender", String(this.loggedInUserData.gender));
+					localStorage.setItem('loginStatus', 'true');
 				},
 				(err) => {
 					err = err.error.message;
