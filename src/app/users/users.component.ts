@@ -1,16 +1,68 @@
-import { Component, OnInit } from '@angular/core';
-import { faMagnifyingGlass, faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { UserData } from './../interface/user-data';
+import { NavigationEnd, Router } from '@angular/router';
+import { HttpParams } from '@angular/common/http';
+import { Tweet } from './../interface/tweet';
+import { TweetService } from './../service/tweet.service';
+import { UserService } from '../service/user.service';
+import { NgForm, NgModel } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { faEnvelope, faHeartCrack, faMagnifyingGlass, faMobile, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+	selector: 'app-users',
+	templateUrl: './users.component.html',
+	styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+	someSubscription: any;
 
-  constructor() { }
+	faMagnifyingGlass = faMagnifyingGlass;
+	faHeartCrack = faHeartCrack;
+	faUser = faUser;
+	faEnvelope = faEnvelope;
+	faMobile = faMobile;
 
-  ngOnInit(): void {
-  }
+	userFirstName: any;
+	userLastName: any;
+	userEmail: any;
+	userGender: any;
+
+	users: UserData[];
+
+	emptyUsers: boolean = false;
+
+	constructor(private service: UserService, private router: Router) {
+	}
+
+	ngOnInit(): void {
+		// to Load all tweets at initialization - call rest service getAllTweets
+		this.service.findAllUsers().subscribe(
+			(res: UserData[]) => {
+				this.users = res;
+				this.emptyUsers = false;
+			},
+			(err) => {
+				console.log("error -> " + err);
+				console.log(err.error.message);
+				this.emptyUsers = true;
+				this.ngOnInit();
+			}
+		)
+
+		this.userFirstName = localStorage.getItem("firstName");
+		this.userLastName = localStorage.getItem("lastName");
+		this.userEmail = localStorage.getItem("emailId");
+		this.userGender = localStorage.getItem("gender");
+	}
+
+	// refresh component
+	// updatePage() {
+	// 	let currentUrl = this.router.url;
+	// 	this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+	// 	this.router.onSameUrlNavigation = 'reload';
+	// 	this.router.navigate([currentUrl]);
+	// }
 
 }
+
+

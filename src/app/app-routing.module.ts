@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UsersComponent } from './users/users.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
 	{ path: "login", component: LoginComponent },
 	{ path: "register", component: RegisterComponent },
 	{ path: "user", component: UserHomeComponent },
+	{ path: "users", component: UsersComponent },
 	{ path: "forgot", component: ForgotPasswordComponent },
 	{ path: "logout", component: LogoutComponent },
 	{ path: "**", component: ErrorComponent }

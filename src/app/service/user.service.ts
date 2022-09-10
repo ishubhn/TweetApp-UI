@@ -31,7 +31,7 @@ export class UserService {
 
 	// find all users
 	findAllUsers = () => {
-		return this.http.get(`${this.REST_SERVICE_URI}/users/all`);
+		return this.http.get<UserData[]>(`${this.REST_SERVICE_URI}/users/all`);
 	}
 
 	// find user by id
