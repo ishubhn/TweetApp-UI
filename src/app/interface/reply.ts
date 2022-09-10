@@ -5,5 +5,4 @@ export interface Reply {
     email: string;
     likes: number;
     date: Date;
-    // "date": string;
 }
