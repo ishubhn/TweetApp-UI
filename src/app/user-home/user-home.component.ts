@@ -24,13 +24,15 @@ export class UserHomeComponent implements OnInit {
 	faHeartCrack = faHeartCrack;
 
 	tweets: Tweet[];
-	userName: any;
+	userFirstName: any;
+	userLastName: any;
+	userEmail: any;
+	userGender: any;
 	text: NgModel;
 	tweetLength: number;
 	emptyTweets: boolean = false;
 
 	constructor(private service: UserService, private tweetService: TweetService, private router: Router) {
-		this.userName = localStorage.getItem("username");
 	}
 
 	ngOnInit(): void {
@@ -49,6 +51,10 @@ export class UserHomeComponent implements OnInit {
 			}
 		);
 
+		this.userFirstName = localStorage.getItem("firstName");
+		this.userLastName = localStorage.getItem("lastName");
+		this.userEmail = localStorage.getItem("emailId");
+		this.userGender = localStorage.getItem("gender");
 	}
 
 	keyup(text: NgModel) {
@@ -65,7 +71,7 @@ export class UserHomeComponent implements OnInit {
 			const params = new HttpParams()
 				.set('body', this.tweetBodyForm.value.body);
 
-			this.tweetService.postTweet(this.userName, params)
+			this.tweetService.postTweet(this.userEmail, params)
 				.subscribe(
 					response => {
 						console.log("Tweet posted successfully");

@@ -1,7 +1,8 @@
 <div class="container pt-3 border border-dark rounded">
     <div class="fs-6 fw-bold">
-        <fa-icon class="tweet-icon" [icon]="faTwitter"></fa-icon><span class="px-2">{{tweet.email}}</span>
+        <fa-icon class="tweet-icon" [icon]="faTwitter"></fa-icon>
         <!-- Add user name -->
+        <span class="px-2">{{user.firstName}} {{user.lastName}}</span>
         <span class="text-muted d-inline-block fs-6">{{tweet.email}}</span>
         <span class="float-end timestamp">| {{tweet.timestamp | date}}</span>
     </div>

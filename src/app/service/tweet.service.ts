@@ -21,5 +21,7 @@ export class TweetService {
 		return this.http.post(`${this.REST_SERVICE_URI}/${email}/add`,params);
 	}
 
-
+	likeTweet(email: any, tweetId: number) {
+		return this.http.put(`${this.REST_SERVICE_URI}/${email}/like/${tweetId}`,{});
+	}
 }

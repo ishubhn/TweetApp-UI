@@ -3,16 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { UserService } from '../service/user.service'
-
-export class User {
-	emailId: String;
-	firstName: String;
-	lastName: String;
-	gender: String;
-	contactNumber: String;
-	dateOfBirth: String;
-	password: String;
-}
+import { User } from '../interface/user';
 
 @Component({
 	selector: 'app-register',
@@ -63,7 +54,7 @@ export class RegisterComponent implements OnInit {
 	}
 
 	onSubmit(f: NgForm) {
-		this.user.emailId = this.signupForm.value.emailId;
+		this.user.emailId = String(this.signupForm.value.emailId).toLowerCase();
 		this.user.firstName = this.signupForm.value.firstName;
 		this.user.lastName = this.signupForm.value.lastName;
 		this.user.gender = this.signupForm.value.gender;

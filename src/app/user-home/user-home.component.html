@@ -15,7 +15,7 @@
                     <a class="nav-link active" aria-current="page" routerLink="/#">All Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Logout</a>
+                    <a class="nav-link active logout-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Logout</a>
                 </li>
             </ul>
             <form class="d-flex" #f="ngForm" (ngSubmit)="searchUser(f)">
@@ -38,8 +38,7 @@
             <img src="assets/man.png" width="92px" height="92px" class="rounded-circle pt-2" alt="Twitter Profile">
             <!-- If gender of user is male then man; else girl -->
             <div class="text-justify">
-                <!-- <p class="fs-3 pt-3 me-2 text-wrap">{{userName}}</p> -->
-                <p class="fs-3 pt-3 me-2 text-wrap">Shubham Nagre</p>
+                <p class="fs-3 pt-3 me-2 text-wrap">{{userFirstName}} {{userLastName}}</p>
             </div>
         </div>
 

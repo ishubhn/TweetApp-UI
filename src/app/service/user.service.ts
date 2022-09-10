@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../register/register.component';
-import { LoginUser } from '../login/login.component';
-import { UpdateUser } from '../forgot-password/forgot-password.component';
+import { LoginUser } from '../interface/login-user';
+import { User } from '../interface/user';
+import { UpdateUserPassword } from './../interface/update-user-password';
 
 @Injectable({
 	providedIn: 'root'
@@ -24,7 +24,7 @@ export class UserService {
 	}
 
 	// forgot password
-	forgotPassword = (userEmail: String, user: UpdateUser) => {
+	forgotPassword = (userEmail: String, user: UpdateUserPassword) => {
 		return this.http.post(`${this.REST_SERVICE_URI}/${userEmail}/forgot`, user);
 	}
 

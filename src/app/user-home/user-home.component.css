@@ -1,3 +1,7 @@
 textarea {
 	resize: none;
 }
+
+.logout-btn {
+	cursor: pointer;
+}

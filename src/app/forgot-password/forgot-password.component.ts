@@ -4,12 +4,7 @@ import { UserService } from '../service/user.service'
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { timer } from 'rxjs';
-
-export class UpdateUser {
-    password: String;
-    newPassword: String;
-    dateOfBirth: String;
-}
+import { UpdateUserPassword } from '../interface/update-user-password';
 
 @Component({
     selector: 'app-forgot-password',
@@ -25,7 +20,7 @@ export class ForgotPasswordComponent implements OnInit {
     errorMessage: any;
     subscription: any;
 
-    user: UpdateUser = {
+    user: UpdateUserPassword = {
         password: "",
         newPassword: "",
         dateOfBirth: ""

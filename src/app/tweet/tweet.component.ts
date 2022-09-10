@@ -1,3 +1,6 @@
+import { UserData } from './../interface/user-data';
+import { TweetService } from './../service/tweet.service';
+import { UserService } from './../service/user.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faHeart, faRetweet } from '@fortawesome/free-solid-svg-icons';
@@ -17,15 +20,22 @@ export class TweetComponent implements OnInit {
 	faLikeEmpty = farHeart;
 	likeClass: string;
 	retweetClass: string;
+	user: any;
 
 	@Input() 
 	tweet: Tweet;
 	
-	constructor() { }
+	constructor(private service: UserService, private tweetService: TweetService) { }
 	
 	ngOnInit(): void {
-		// console.log(this.tweet.email);
-		// console.log(this.tweet.body);
+		this.service.findUserById(this.tweet.email).subscribe(
+			(response) => {
+				this.user = response;
+			}
+		);
+		console.log("in tweet component");
+		
+		console.log(this.user);
 	}
 
 	addLike() {

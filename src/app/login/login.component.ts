@@ -1,12 +1,10 @@
+import { LoginUser } from './../interface/login-user';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../service/user.service';
-
-export class LoginUser {
-	email: String;
-	password: String;
-}
+import { UserData } from '../interface/user-data';
+import { timer } from 'rxjs';
 
 @Component({
 	selector: 'app-login',
@@ -17,33 +15,53 @@ export class LoginComponent implements OnInit {
 
 	@ViewChild('f', { static: false })
 	loginForm: NgForm;
-	isUserLoginSuccess:boolean = true;
-	
+	isUserLoginSuccess: boolean = true;
+	subscription: any;
+
 	private user: LoginUser = {
 		email: "",
 		password: ""
 	};
+
+	loggedInUserData: any;
 
 	constructor(private service: UserService, private router: Router) { }
 
 	ngOnInit(): void {
 	}
 
+	getLoggedInUserData(email: String) {
+		this.service.findUserById(email)
+			.subscribe(
+				(response) => {
+					this.loggedInUserData = response;
+					console.log(response);
+					// Store username in local storage in browser
+					localStorage.setItem("emailId", String(this.loggedInUserData.emailId).toLowerCase());
+					localStorage.setItem("firstName", String(this.loggedInUserData.firstName));
+					localStorage.setItem("lastName", String(this.loggedInUserData.lastName));
+					localStorage.setItem("gender", String(this.loggedInUserData.gender));
+				},
+				(err) => {
+					err = err.error.message;
+					console.error(err);
+				}
+			)
+	}
+
 	onSubmit(f: NgForm) {
-		this.user.email = this.loginForm.value.email;
+		this.user.email = String(this.loginForm.value.email).toLowerCase();
 		this.user.password = this.loginForm.value.password;
-		
+
 		console.log(this.user);
 		this.service.loginUser(this.user).subscribe(
 			responseData => {
 				console.log(responseData);
 				console.log(this.user);
 				console.log("User Logged in successfully");
-				// make a get call find user by email
-				// save response data in local storage
-				// Store username in local storage in browser
-				localStorage.setItem("username", String(this.user.email));
-				this.router.navigate(['/user']);
+				// make a get call find user by email, save response data in local storage
+				this.getLoggedInUserData(this.user.email);
+				this.wait(3000);
 			},
 			err => {
 				console.log(this.user);
@@ -56,5 +74,12 @@ export class LoginComponent implements OnInit {
 		// console.log(f.value.password);
 		// this.user = f.value;
 	}
+
+	// takes time to store data in localStorage, so added timer
+	wait = (delay: number) => {
+        this.subscription = timer(delay).subscribe(() => {
+            this.router.navigate(['/user']);
+        })
+    };
 
 }
