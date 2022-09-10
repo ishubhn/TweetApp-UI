@@ -26,7 +26,7 @@ export class TweetComponent implements OnInit {
 	faUpdate = faPenToSquare;
 
 	likeClass: string;
-	retweetClass: string;
+	replyClass: string;
 	deleteClass: string;
 	updateClass: string;
 
