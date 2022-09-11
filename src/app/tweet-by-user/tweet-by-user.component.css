@@ -1,0 +1,15 @@
+.like, .reply, .delete, .update {
+    cursor: pointer;    
+}
+
+.timestamp {
+    font-size: 0.8rem;
+}
+
+fa-icon.likedTweeet {
+    color: rgb(222, 37, 37);
+}
+
+textarea {
+	resize: none;
+}

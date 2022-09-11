@@ -1,0 +1,14 @@
+<div class="container-fluid py-2 border-secondary border-start">
+    <!-- tweet Header -->
+    <div class="fs-6">
+        <fa-icon [icon]="faTwitter"></fa-icon>
+        <!-- Headers -->
+        <span class="px-2 fw-bold">{{user.firstName}} {{user.lastName}}</span>
+        <span class="text-muted d-inline-block fs-6">{{reply.email}}</span>
+        <span class="float-end timestamp">| {{reply.date | date:'dd-MMM-yy, hh:mm a'}}</span>
+        <!-- Reply Body -->
+        <div class="text-wrap py-2 ps-3 ms-5 me-2 mt-2 blockquote">
+            {{reply.body}}
+        </div>
+    </div>
+</div>

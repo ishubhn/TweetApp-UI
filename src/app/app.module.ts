@@ -18,6 +18,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { TweetComponent } from './tweet/tweet.component';
 import { ReplyComponent } from './tweet/reply/reply.component';
+import { UserComponent } from './user/user.component';
+import { TweetByUserComponent } from './tweet-by-user/tweet-by-user.component';
+import { ReplyByUserComponent } from './tweet-by-user/reply-by-user/reply-by-user.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { ReplyComponent } from './tweet/reply/reply.component';
     UsersComponent,
     UserHomeComponent,
     TweetComponent,
-    ReplyComponent
+    ReplyComponent,
+    UserComponent,
+    TweetByUserComponent,
+    ReplyByUserComponent
   ],
   imports: [
     BrowserModule,
