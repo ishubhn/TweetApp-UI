@@ -64,8 +64,13 @@ export class UserHomeComponent implements OnInit {
 
 	//  to Search all users based on user id and route to different page and show particular user page
 	searchUser(f: NgForm) {
-
+		var email = String(this.searchUsersForm.value.email).toLowerCase();
+		this.router.navigate(['/user/search', email]);
 	}
+
+	// goToProductDetails(id) {
+	// 	this.router.navigate(['/product-details', id]);
+	//   }
 
 	postTweet(g: NgForm) {
 		if (this.tweetBodyForm.value.body !== null && this.tweetBodyForm.value.body !== " ") {

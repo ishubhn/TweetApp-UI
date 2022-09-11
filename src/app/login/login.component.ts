@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../service/user.service';
-import { UserData } from '../interface/user-data';
 import { timer } from 'rxjs';
 
 @Component({
@@ -62,7 +61,7 @@ export class LoginComponent implements OnInit {
 				console.log("User Logged in successfully");
 				// make a get call find user by email, save response data in local storage
 				this.getLoggedInUserData(this.user.email);
-				this.wait(3000);
+				this.wait(1500);
 			},
 			err => {
 				console.log(this.user);
@@ -72,8 +71,6 @@ export class LoginComponent implements OnInit {
 			}
 		)
 		this.loginForm.reset();
-		// console.log(f.value.password);
-		// this.user = f.value;
 	}
 
 	// takes time to store data in localStorage, so added timer
@@ -82,5 +79,4 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/user']);
         })
     };
-
 }
