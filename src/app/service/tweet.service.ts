@@ -17,6 +17,10 @@ export class TweetService {
 		return this.http.get<Tweet[]>(`${this.REST_SERVICE_URI}/all`);
 	}
 
+	getTweetsById(email: String) {
+		return this.http.get<Tweet[]>(`${this.REST_SERVICE_URI}/user/search/${email}`);
+	}
+
 	postTweet(email: any, params: HttpParams) {
 		return this.http.post(`${this.REST_SERVICE_URI}/${email}/add`, params);
 	}
