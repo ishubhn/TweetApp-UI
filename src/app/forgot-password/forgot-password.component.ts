@@ -17,6 +17,7 @@ export class ForgotPasswordComponent implements OnInit {
     faCalendar = faCalendar;
     userEmail: String;
     isUpdatePasswordSuccess: boolean = false;
+    isFormSubmitted: boolean = false;
     errorMessage: any;
     subscription: any;
 
@@ -56,13 +57,14 @@ export class ForgotPasswordComponent implements OnInit {
         this.user.password = this.updatePasswordForm.value.password;
         this.user.newPassword = this.updatePasswordForm.value.newPassword;
         this.user.dateOfBirth = this.parseDate(this.updatePasswordForm.value.dateOfBirth);
+        this.isFormSubmitted = this.updatePasswordForm.submitted;
 
         this.service.forgotPassword(this.userEmail, this.user).subscribe(
             responseData => {
                 console.log(responseData);
                 console.log("Success")
                 this.isUpdatePasswordSuccess = true;
-                this.wait(3000);
+                this.wait(2000);
             },
             err => {
                 this.errorMessage = err.error.message;
@@ -74,6 +76,8 @@ export class ForgotPasswordComponent implements OnInit {
 
     wait = (delay: number) => {
         this.subscription = timer(delay).subscribe(() => {
+            localStorage.clear(); // Remove all data from localStorage memory
+            localStorage.setItem('loginStatus', 'false');
             this.router.navigate(['/login']);
         })
     };

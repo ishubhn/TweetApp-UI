@@ -24,7 +24,7 @@ export class UserComponent implements OnInit {
 	subscription: any;
 	tweetLength: number;
 
-	emptyTweets: boolean;
+	emptyTweets: boolean = true;
 	user: UserData;
 	tweets: Tweet[];
 
@@ -33,6 +33,13 @@ export class UserComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+
+		var loginStatus = String(localStorage.getItem('loginStatus'));
+		
+		if (loginStatus == 'false' || loginStatus == undefined || loginStatus == null) {
+			this.router.navigate(['/login']);
+		}
+
 		this.subscription = this.route.params.subscribe(
 			params => {
 				this.email = params['email'];
@@ -53,12 +60,15 @@ export class UserComponent implements OnInit {
 			res => {
 				this.tweets = res;
 				console.log("in user search component tweets");
-				this.emptyTweets = false;
+				if (this.tweets.length !== 0) {
+					this.emptyTweets = false;
+				}
 				console.log(this.tweets);
 			},
 			err => {
 				console.error(err.error.message);
-				this.emptyTweets = false;
+				this.emptyTweets = true;
+				this.ngOnInit;
 			}
 		);
 	}

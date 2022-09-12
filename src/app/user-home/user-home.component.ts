@@ -37,6 +37,12 @@ export class UserHomeComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		var loginStatus = String(localStorage.getItem('loginStatus'));
+		
+		if (loginStatus == 'false' || loginStatus == undefined || loginStatus == null) {
+			this.router.navigate(['/login']);
+		}
+
 		// to Load all tweets at initialization - call rest service getAllTweets
 		this.tweetService.getAllTweets().subscribe(
 			(responseData: Tweet[]) => {

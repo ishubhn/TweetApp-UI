@@ -11,9 +11,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!-- <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/#">All Users</a>
-                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/forgot">Update Password</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link active logout-btn" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">Logout</a>
@@ -40,7 +40,6 @@
             <hr style="height:2px; border-width:0; color:gray; background-color:gray">
             <div *ngIf="!emptyUsers">
                 <div class="py-2 my-2" *ngFor="let user of users">
-                    <!-- <app-tweet [tweet]="tweet"></app-tweet> -->
                     <div class="container py-2 pt-3 border border-dark rounded">
                         <!-- tweet Header -->
                         <div class="fs-6">
@@ -56,9 +55,6 @@
                                 <fa-icon class="fa-lg" [icon]="faMobile"></fa-icon>  - {{user.contactNumber}}
                             </div>
                         </div>
-                        <!-- <div class="text-wrap py-2 ps-3 ms-5 me-2 mt-2 blockquote" *ngIf="!isUpdate else input">
-                            {{tweet.body}}
-                        </div> -->
                     </div>
 
                 </div>

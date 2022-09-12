@@ -35,6 +35,12 @@ export class UsersComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		var loginStatus = String(localStorage.getItem('loginStatus'));
+		
+		if (loginStatus == 'false' || loginStatus == undefined || loginStatus == null) {
+			this.router.navigate(['/login']);
+		}
+		
 		// to Load all tweets at initialization - call rest service getAllTweets
 		this.service.findAllUsers().subscribe(
 			(res: UserData[]) => {
@@ -54,15 +60,6 @@ export class UsersComponent implements OnInit {
 		this.userEmail = localStorage.getItem("emailId");
 		this.userGender = localStorage.getItem("gender");
 	}
-
-	// refresh component
-	// updatePage() {
-	// 	let currentUrl = this.router.url;
-	// 	this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-	// 	this.router.onSameUrlNavigation = 'reload';
-	// 	this.router.navigate([currentUrl]);
-	// }
-
 }
 
 
