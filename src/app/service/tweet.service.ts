@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class TweetService {
 
 	// private REST_SERVICE_URI = "http://localhost:8082/api/v1.0/tweets"
-	private REST_SERVICE_URI = "http://3.109.5.179:8082/api/v1.0/tweets";
+	private REST_SERVICE_URI = "http://65.2.116.138:8082/api/v1.0/tweets";
 	private tweets: Observable<Tweet[]>;
 
 	constructor(private http: HttpClient) { }
