@@ -11,7 +11,7 @@ import { User } from '../interface/user';
 export class UserService {
 
 	// private REST_SERVICE_URI = "http://localhost:8082/api/v1.0/tweets"
-	private REST_SERVICE_URI = "http://52.66.219.27:8082/api/v1.0/tweets"
+	private REST_SERVICE_URI = "http://43.205.141.114:8082/api/v1.0/tweets"
 	
 	constructor(private http: HttpClient) { }
 
